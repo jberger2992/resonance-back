@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS resonance_db;
+CREATE DATABASE resonance_db;
