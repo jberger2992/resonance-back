@@ -9,10 +9,10 @@ Class.hasMany(Skill);
 Skill.belongsTo(Class);
 
 Character.hasOne(Class);
-Class.belongsToMany(Character);
+Class.belongsToMany(Character,{through:"Character_Classes"});
 
 Player.hasMany(Character);
-Character.belongsToMany(Player);
+Character.belongsToMany(Player,{through:"Player_Characters"});
 
 Skill.hasMany(Buff);
 Buff.belongsToMany(Skill,{through:"Skill_Buffs"});
