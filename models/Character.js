@@ -1,16 +1,16 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Buff extends Model {};
+class Character extends Model {};
 
-Buff.init(
+Character.init(
     {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        description: {
-            type: DataTypes.TEXT,
+        role: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },
@@ -19,4 +19,4 @@ Buff.init(
     }
 );
 
-module.exports = Buff;
+module.exports = Character;

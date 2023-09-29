@@ -1,16 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Buff extends Model {};
+class Player extends Model {};
 
-Buff.init(
+Player.init(
     {
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.TEXT,
             allowNull: false,
         },
     },
@@ -19,4 +15,4 @@ Buff.init(
     }
 );
 
-module.exports = Buff;
+module.exports = Player;

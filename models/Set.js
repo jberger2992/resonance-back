@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Buff extends Model {};
+class Set extends Model {};
 
-Buff.init(
+Set.init(
     {
         name: {
             type: DataTypes.STRING,
@@ -13,10 +13,14 @@ Buff.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
     {
         sequelize,
     }
 );
 
-module.exports = Buff;
+module.exports = Set;

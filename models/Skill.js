@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Buff extends Model {};
+class Skill extends Model {};
 
-Buff.init(
+Skill.init(
     {
         name: {
             type: DataTypes.STRING,
@@ -19,4 +19,4 @@ Buff.init(
     }
 );
 
-module.exports = Buff;
+module.exports = Skill;

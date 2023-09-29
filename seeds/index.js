@@ -144,12 +144,13 @@ const skills = [
     {
         name: "Combat Prayer",
         description: "Slam your staff down to activate its blessings, healing you and your allies in front of you for 7608 Health. Also grants Minor Berserk and Minor Resolve increasing you and your allies' damage done by 5% and Physical Resistance and Spell Resistance by 2974 for 10 seconds.",
-        BuffId:8
+        // BuffId:8
     },
     {
         name: "Storm Atronach",
         description: "Summon an immobile storm atronach at the target location. Its arrival deals 6149 Shock Damage and stuns enemies for 3 seconds. The atronach zaps the closest enemy, dealing 3073 Shock Damage every 1 second. An ally near the atronach can activate the ON-icon-synergy-Charged Lightning.png​ Charged Lightning synergy, granting nearby allies Major Berserk for 10 seconds, increasing their damage done by 10%.",
-        BuffId:7
+        ClassId:3,
+        // BuffId:7
     },
 ]
 
@@ -158,19 +159,75 @@ const sets = [
         name: "Vestment of Olorime",
         description: "Casting abilities that leave an effect on the ground in combat will create a circle of might for 5 seconds. You and your group members in the circle gain Major Courage for 20 seconds, increasing your Weapon and Spell Damage by 430 for 20 seconds. This effect can occur once every 10 seconds.",
         role: "Healer",
-        BuffId:1
+        // BuffId:1
+    },
+    {
+        name: "Vestment of Olorime",
+        description: "Casting abilities that leave an effect on the ground in combat will create a circle of might for 5 seconds. You and your group members in the circle gain Major Courage for 20 seconds, increasing your Weapon and Spell Damage by 430 for 20 seconds. This effect can occur once every 10 seconds.",
+        role: "Tank",
+        // BuffId:1
     },
     {
         name: "Spell Power Cure",
         description: "When you overheal yourself or an ally, you give the target Major Courage for 5 seconds which increases their Weapon and Spell Damage by 430.",
         role: "Healer",
-        BuffId:1
+        // BuffId:1
     },
     {
         name: "Claw of Yolnahkriin",
         description: "When you taunt an enemy, you give yourself and 11 group members Minor Courage for 15 seconds, increasing your Weapon and Spell Damage by 215. This effect can occur once every 8 seconds.",
         role: "Tank",
-        BuffId:2
+        // BuffId:2
+    },
+    {
+        name: "Pearlescent Ward",
+        description: "Grants you and up to 11 other group members Pearlescent Ward. This bonus persists through death. Pearlescent Ward increases Weapon and Spell Damage by up to 180 based on the number of group members that are alive. Current 180 Weapon and Spell Damage. Pearlescent Ward increases damage reduction from non-player enemies out of 66% based on the number of group members that are dead.",
+        role: "Tank",
+        // BuffId:
+    },
+    {
+        name: "Turning Tide",
+        description: "When you Block, you gain Flowing Water for 10 seconds, causing your next Bash attack to deal 2223 Magic Damage to up to 6 enemies in a 5 by 10 meter line, and apply Major Vulnerability for 10 seconds, increasing their damage taken by 10%. This effect can occur once every 15 seconds and scales off your Max Health.",
+        role: "Tank",
+        // BuffId:
+    },
+    {
+        name: "Pillager's Profit",
+        description: "Casting an Ultimate ability while in combat grants 5% of Ultimate spent, up to a max of 20, as Ultimate to up to 11 other group members within 12 meters every 2 seconds over 10 seconds. Group members can only be affected by this set once every 45 seconds.",
+        role: "Healer",
+    },
+    {
+        name: "Roaring Opportunist",
+        description: "After completing a fully-charged Heavy Attack, you and up to 5 group members gain Major Slayer, increasing your damage done to Dungeon, Trial, and Arena Monsters by 10% for 1 second for every 600 Spell Damage or 6300 Magicka you have. Roaring Opportunist can only affect a target every 22 seconds. Maximum duration 12 seconds.",
+        role: "Healer",
+        // BuffId:
+    },
+    {
+        name: "Jorvuld's Guidance",
+        description: " While in combat, increases the duration of all Major buffs, Minor buffs, and damage shields you apply to yourself and allies by 40%.",
+        role: "Healer",
+    },
+    {
+        name: "Saxhleel Champion",
+        description: " When you use an Ultimate ability while in combat, you and up to 11 group members within 28 meters of you gain Major Force for 1 second per 15 Ultimate spent, increasing your Critical Damage done by 20%.",
+        role: "Tank",
+        // BuffId:
+    },
+    {
+        name: "Saxhleel Champion",
+        description: " When you use an Ultimate ability while in combat, you and up to 11 group members within 28 meters of you gain Major Force for 1 second per 15 Ultimate spent, increasing your Critical Damage done by 20%.",
+        role: "Healer",
+        // BuffId:
+    },
+    {
+        name: "Powerful Assault",
+        description: "When you cast an Assault ability while in combat, you and up to 5 group members within 12 meters gain 307 Weapon and Spell Damage for 15 seconds.",
+        role: "Tank",
+    },
+    {
+        name: "Powerful Assault",
+        description: "When you cast an Assault ability while in combat, you and up to 5 group members within 12 meters gain 307 Weapon and Spell Damage for 15 seconds.",
+        role: "Healer",
     },
     {
         name: "Coral Riptide",
