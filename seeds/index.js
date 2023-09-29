@@ -398,10 +398,10 @@ const seedDb = async () => {
     try{
         await sequelize.sync({force:true});
         // const userData = await User.bulkCreate(users,{individualHooks:true});
-        const buffData = await Buff.bulkCreate(buffs);
-        const skillData = await Skill.bulkCreate(skills);
-        const setData = await Set.bulkCreate(sets);
         const classData = await Class.bulkCreate(classes);
+        const buffData = await Buff.bulkCreate(buffs);
+        const setData = await Set.bulkCreate(sets);
+        const skillData = await Skill.bulkCreate(skills);
         const charData = await Character.bulkCreate(characters);
         process.exit(0);
     } catch (err){
