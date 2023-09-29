@@ -8,7 +8,7 @@ router.get("/",(req,res)=>{
     Set.findAll({
         include:[Buff]
     }).then(sets=>{
-        if(locations.length===0){
+        if(sets.length===0){
             return res.status(404).json({msg:"No Sets found."})
         }
         res.json(sets)

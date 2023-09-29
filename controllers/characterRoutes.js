@@ -8,7 +8,7 @@ router.get("/",(req,res)=>{
     Character.findAll({
         include:[Class]
     }).then(chars=>{
-        if(locations.length===0){
+        if(chars.length===0){
             return res.status(404).json({msg:"No Characters found."})
         }
         res.json(chars)

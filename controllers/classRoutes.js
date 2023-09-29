@@ -8,7 +8,7 @@ router.get("/",(req,res)=>{
     Class.findAll({
         include:[Skill]
     }).then(classes=>{
-        if(locations.length===0){
+        if(classes.length===0){
             return res.status(404).json({msg:"No Classes found."})
         }
         res.json(classes)

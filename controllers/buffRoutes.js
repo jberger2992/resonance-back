@@ -7,7 +7,7 @@ const {Buff} = require("../models");
 router.get("/",(req,res)=>{
     Buff.findAll({
     }).then(buffs=>{
-        if(locations.length===0){
+        if(buffs.length===0){
             return res.status(404).json({msg:"No Buffs found."})
         }
         res.json(buffs)

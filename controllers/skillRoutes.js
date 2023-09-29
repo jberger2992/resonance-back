@@ -8,7 +8,7 @@ router.get("/",(req,res)=>{
     Skill.findAll({
         include:[Buff]
     }).then(skills=>{
-        if(locations.length===0){
+        if(skills.length===0){
             return res.status(404).json({msg:"No Skills found."})
         }
         res.json(skills)
