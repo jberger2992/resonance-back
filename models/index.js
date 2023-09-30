@@ -8,8 +8,8 @@ const Player = require("./Player");
 Class.hasMany(Skill);
 Skill.belongsTo(Class);
 
-Character.hasOne(Class);
-Class.belongsToMany(Character,{through:"Character_Classes"});
+Class.hasMany(Character);
+Character.belongsTo(Class);
 
 Player.hasMany(Character);
 Character.belongsToMany(Player,{through:"Player_Characters"});
