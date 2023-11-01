@@ -1,15 +1,8 @@
 const Buff = require("./Buff");
-const Class = require("./Class");
 const Set = require("./Set");
 const Skill = require("./Skill");
 const Character = require("./Character");
 const Player = require("./Player");
-
-Class.hasMany(Skill);
-Skill.belongsTo(Class);
-
-Class.hasMany(Character);
-Character.belongsTo(Class);
 
 Player.hasMany(Character);
 Character.belongsToMany(Player,{through:"Player_Characters"});
@@ -21,7 +14,6 @@ Buff.belongsToMany(Set,{through:"Set_Buffs"});
 
 module.exports = {
     Buff,
-    Class,
     Set,
     Skill,
     Character,

@@ -13,9 +13,21 @@ Set.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        role: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        tank: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        healer: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        dps: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         },
     },
     {

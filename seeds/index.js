@@ -1,142 +1,90 @@
 const sequelize = require("../config/connection");
-const {Buff, Character, Class, Player, Set, Skill} = require("../models");
-
-const classes = [
-    {
-        name: "Dragonknight",
-        description: "These skillful masters-at-arms use the ancient Akaviri martial arts tradition of battle-spirit, and wield fearsome magic that pounds, shatters and physically alters the world around them.",
-    },
-    {
-        name: "Nightblade",
-        description: "Nightblades are adventurers and opportunists with a gift for getting in and out of trouble. Relying variously on stealth, blades, and speed, Nightblades thrive on conflict and misfortune, trusting to their luck and cunning to survive.",
-    },
-    {
-        name: "Sorcerer",
-        description: "Sorcerers can use conjuration and destruction spells to hurl lightning bolts and create shock fields, wield dark magic to snare and stun, and summon Daedric combat followers from Oblivion to assist them.",
-    },
-    {
-        name: "Templar",
-        description: "These traveling knights call upon the powers of light and the burning sun to deal massive damage to their enemies while restoring health, magicka, and stamina to their allies.",
-    },
-    {
-        name: "Warden",
-        description: "Wardens are defenders of the Green, master storytellers whose nature tales become magical reality. They wield frost spells against enemies and summon animals to aid them.",
-    },
-    {
-        name: "Necromancer",
-        description: "Masters of death, Necromancers can call upon corpses to serve as undead thralls and weave ghastly spells to both harm and heal.",
-    },
-    {
-        name: "Arcanist",
-        description: "Channel the eldritch powers of Apocrypha as an Arcanist. These scholarly spellcasters channel secret runes and abyssal spells to destroy their enemies, heal their allies, and defend against any foe.",
-    },
-]
+const {Buff, Character, Player, Set, Skill} = require("../models");
 
 const characters = [
     {
         name: "DK Tank",
         role: "Tank",
-        ClassId:1
     },
     {
         name: "DK Healer",
         role: "Healer",
-        ClassId:1
     },
     {
         name: "DK DPS",
         role: "DPS",
-        ClassId:1
     },
     {
         name: "Blade Tank",
         role: "Tank",
-        ClassId:2
     },
     {
         name: "Blade Healer",
         role: "Healer",
-        ClassId:2
     },
     {
         name: "Blade DPS",
         role: "DPS",
-        ClassId:2
     },
     {
         name: "Sorc Tank",
         role: "Tank",
-        ClassId:3
     },
     {
         name: "Sorc Healer",
         role: "Healer",
-        ClassId:3
     },
     {
         name: "Sorc DPS",
         role: "DPS",
-        ClassId:3
     },
     {
         name: "Plar Tank",
         role: "Tank",
-        ClassId:4
     },
     {
         name: "Plar Healer",
         role: "Healer",
-        ClassId:4
     },
     {
         name: "Plar DPS",
         role: "DPS",
-        ClassId:4
     },
     {
         name: "Warden Tank",
         role: "Tank",
-        ClassId:5
     },
     {
         name: "Warden Healer",
         role: "Healer",
-        ClassId:5
     },
     {
         name: "Warden DPS",
         role: "DPS",
-        ClassId:5
     },
     {
         name: "Cro Tank",
         role: "Tank",
-        ClassId:6
     },
     {
         name: "Cro Healer",
         role: "Healer",
-        ClassId:6
     },
     {
         name: "Cro DPS",
         role: "DPS",
-        ClassId:6
     },
     {
         name: "Arc Tank",
         role: "Tank",
-        ClassId:7
     },
     {
         name: "Arc Healer",
         role: "Healer",
-        ClassId:7
     },
     {
         name: "Arc DPS",
         role: "DPS",
-        ClassId:7
     },
 ]
 
@@ -149,7 +97,6 @@ const skills = [
     {
         name: "Storm Atronach",
         description: "Summon an immobile storm atronach at the target location. Its arrival deals 6149 Shock Damage and stuns enemies for 3 seconds. The atronach zaps the closest enemy, dealing 3073 Shock Damage every 1 second. An ally near the atronach can activate the ON-icon-synergy-Charged Lightning.png​ Charged Lightning synergy, granting nearby allies Major Berserk for 10 seconds, increasing their damage done by 10%.",
-        ClassId:3,
         // BuffId:7
     },
 ]
@@ -158,96 +105,102 @@ const sets = [
     {
         name: "Vestment of Olorime",
         description: "Casting abilities that leave an effect on the ground in combat will create a circle of might for 5 seconds. You and your group members in the circle gain Major Courage for 20 seconds, increasing your Weapon and Spell Damage by 430 for 20 seconds. This effect can occur once every 10 seconds.",
-        role: "Healer",
-        // BuffId:1
-    },
-    {
-        name: "Vestment of Olorime",
-        description: "Casting abilities that leave an effect on the ground in combat will create a circle of might for 5 seconds. You and your group members in the circle gain Major Courage for 20 seconds, increasing your Weapon and Spell Damage by 430 for 20 seconds. This effect can occur once every 10 seconds.",
-        role: "Tank",
+        type: "5pc",
+        tank: true,
+        healer: true,
         // BuffId:1
     },
     {
         name: "Spell Power Cure",
         description: "When you overheal yourself or an ally, you give the target Major Courage for 5 seconds which increases their Weapon and Spell Damage by 430.",
-        role: "Healer",
+        type: "5pc",
+        healer: true,
         // BuffId:1
     },
     {
         name: "Claw of Yolnahkriin",
         description: "When you taunt an enemy, you give yourself and 11 group members Minor Courage for 15 seconds, increasing your Weapon and Spell Damage by 215. This effect can occur once every 8 seconds.",
-        role: "Tank",
+        type: "5pc",
+        tank: true,
         // BuffId:2
     },
     {
         name: "Pearlescent Ward",
         description: "Grants you and up to 11 other group members Pearlescent Ward. This bonus persists through death. Pearlescent Ward increases Weapon and Spell Damage by up to 180 based on the number of group members that are alive. Current 180 Weapon and Spell Damage. Pearlescent Ward increases damage reduction from non-player enemies out of 66% based on the number of group members that are dead.",
-        role: "Tank",
-        // BuffId:
+        type: "5pc",
+        tank: true,
     },
     {
         name: "Turning Tide",
         description: "When you Block, you gain Flowing Water for 10 seconds, causing your next Bash attack to deal 2223 Magic Damage to up to 6 enemies in a 5 by 10 meter line, and apply Major Vulnerability for 10 seconds, increasing their damage taken by 10%. This effect can occur once every 15 seconds and scales off your Max Health.",
-        role: "Tank",
+        type: "5pc",
+        tank: true,
         // BuffId:
     },
     {
         name: "Pillager's Profit",
         description: "Casting an Ultimate ability while in combat grants 5% of Ultimate spent, up to a max of 20, as Ultimate to up to 11 other group members within 12 meters every 2 seconds over 10 seconds. Group members can only be affected by this set once every 45 seconds.",
-        role: "Healer",
+        type: "5pc",
+        healer: true,
     },
     {
         name: "Roaring Opportunist",
         description: "After completing a fully-charged Heavy Attack, you and up to 5 group members gain Major Slayer, increasing your damage done to Dungeon, Trial, and Arena Monsters by 10% for 1 second for every 600 Spell Damage or 6300 Magicka you have. Roaring Opportunist can only affect a target every 22 seconds. Maximum duration 12 seconds.",
-        role: "Healer",
+        type: "5pc",
+        healer: true,
         // BuffId:
     },
     {
         name: "Jorvuld's Guidance",
         description: " While in combat, increases the duration of all Major buffs, Minor buffs, and damage shields you apply to yourself and allies by 40%.",
-        role: "Healer",
+        type: "5pc",
+        healer: true,
     },
     {
         name: "Saxhleel Champion",
         description: " When you use an Ultimate ability while in combat, you and up to 11 group members within 28 meters of you gain Major Force for 1 second per 15 Ultimate spent, increasing your Critical Damage done by 20%.",
-        role: "Tank",
-        // BuffId:
-    },
-    {
-        name: "Saxhleel Champion",
-        description: " When you use an Ultimate ability while in combat, you and up to 11 group members within 28 meters of you gain Major Force for 1 second per 15 Ultimate spent, increasing your Critical Damage done by 20%.",
-        role: "Healer",
+        type: "5pc",
+        tank: true,
+        healer: true,
         // BuffId:
     },
     {
         name: "Powerful Assault",
         description: "When you cast an Assault ability while in combat, you and up to 5 group members within 12 meters gain 307 Weapon and Spell Damage for 15 seconds.",
-        role: "Tank",
+        type: "5pc",
+        tank: true,
+        healer: true,
     },
     {
         name: "Powerful Assault",
         description: "When you cast an Assault ability while in combat, you and up to 5 group members within 12 meters gain 307 Weapon and Spell Damage for 15 seconds.",
-        role: "Healer",
+        type: "5pc",
+        tank: true,
+        healer: true,
     },
     {
         name: "Coral Riptide",
         description: "Increase your Weapon and Spell Damage by up to 740 based on your missing Stamina, reaching the maximum at 33% Stamina.",
-        role: "DPS",
+        type: "5pc",
+        dps: true,
     },
     {
         name: "Whorl of the Depths",
         description: "When you deal damage with a Light Attack, you apply Whorl of the Depths to the target, dealing 988 Frost Damage over 8 seconds. When this effect ends, a 5 meter whirlpool is created under the target for 6 seconds and deals 743 Frost Damage every 1 second. This effect can occur once every 18 seconds and scales off the higher of your Weapon or Spell Damage.",
-        role: "DPS",
+        type: "5pc",
+        dps: true,
     },
     {
         name: "Deadly Strike",
         description: "Increase the damage your damage over time and channeled abilities do by 15%.",
-        role: "DPS",
+        type: "5pc",
+        dps: true,
     },
     {
         name: "Pillar of Nirn",
         description: "When you deal damage, you create a fissure underneath the enemy after 1 second, dealing 683 Bleed Damage to all enemies within 2.5 meters and causing them to bleed for an additional 3415 Bleed Damage over 10 seconds. This effect can occur once every 10 seconds and scales off the higher of your Weapon or Spell Damage.",
-        role: "DPS",
+        type: "5pc",
+        dps: true,
     },
 ]
 
@@ -398,7 +351,6 @@ const seedDb = async () => {
     try{
         await sequelize.sync({force:true});
         // const userData = await User.bulkCreate(users,{individualHooks:true});
-        const classData = await Class.bulkCreate(classes);
         const buffData = await Buff.bulkCreate(buffs);
         const setData = await Set.bulkCreate(sets);
         const skillData = await Skill.bulkCreate(skills);

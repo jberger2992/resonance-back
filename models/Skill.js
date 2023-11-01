@@ -13,6 +13,10 @@ Skill.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        tree: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {
         sequelize,
