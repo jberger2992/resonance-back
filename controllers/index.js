@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const classRoutes = require("./classRoutes");
-router.use("/api/classes",classRoutes);
 const characterRoutes = require("./characterRoutes");
 router.use("/api/characters",characterRoutes);
 const setRoutes = require("./setRoutes");
